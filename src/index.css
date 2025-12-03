@@ -1,0 +1,533 @@
+@import "tailwindcss";
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Hero Section Responsive Styles */
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column !important;
+    text-align: center !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+    gap: 0 !important;
+  }
+
+  .hero-content {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 3rem !important;
+  }
+
+  .hero-text-section {
+    width: 100% !important;
+    order: 2 !important;
+    align-items: center !important;
+  }
+
+  .hero-image-section {
+    width: 100% !important;
+    order: 1 !important;
+  }
+
+  .hero-title {
+    font-size: 2.25rem !important;
+    line-height: 1.3 !important;
+    text-align: center !important;
+  }
+
+  .hero-description {
+    font-size: 1.125rem !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    line-height: 1.6 !important;
+  }
+
+  .hero-button {
+    width: auto !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+
+  .hero-image {
+    width: 14rem !important;
+    height: 14rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .hero-content {
+    gap: 2rem !important;
+  }
+
+  .hero-title {
+    font-size: 1.875rem !important;
+  }
+
+  .hero-description {
+    font-size: 1rem !important;
+  }
+
+  .hero-image {
+    width: 12rem !important;
+    height: 12rem !important;
+  }
+
+  .hero-button {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 948px) {
+  .desktop-nav,
+  .desktop-cta {
+    display: none !important;
+  }
+
+  /* Footer responsive styles */
+  .footer-left-section {
+    display: none !important;
+  }
+
+  .footer-divider {
+    display: none !important;
+  }
+
+  .footer-right-section {
+    width: 100% !important;
+    text-align: center;
+    align-items: center;
+    padding: 0;
+  }
+}
+
+@media (min-width: 952px) {
+  .mobile-menu,
+  .mobile-dropdown {
+    display: none !important;
+  }
+}
+
+/* Fixed Gradient Animations - Proper implementation */
+.animate-gradient-1,
+.animate-gradient-2,
+.animate-gradient-3 {
+  background-size: 200% 200% !important;
+  border-radius: 2rem !important;
+}
+
+/* Card 1: #0B7FF4 to #8801A3 */
+.animate-gradient-1 {
+  background: linear-gradient(45deg, #0b7ff4, #8801a3, #0b7ff4) !important;
+  animation: gradient-shift-1 3s ease infinite !important;
+}
+
+html {
+  font-family: "Open Sans", sans-serif;
+}
+
+:root {
+  --bg-light: url("/src/assets/background-light.png");
+  --bg-dark: url("/src/assets/background-dark.png");
+}
+
+.bg-theme-aware {
+  background-image: var(--bg-light);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.dark .bg-theme-aware {
+  background-image: var(--bg-dark);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Animated Gradient Border (Mask Technique) */
+.gradient-border {
+  position: relative;
+  padding: 0.15rem; /* thin border */
+  border-radius: 1.5rem;
+  background-size: 200% 200%;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 0.15rem;
+  border-radius: inherit;
+  background: inherit;
+  background-size: inherit;
+  animation: inherit;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+}
+
+/* Specific Gradient Animations */
+.animate-border-1 {
+  background-image: linear-gradient(45deg, #0b7ff4, #8801a3, #0b7ff4);
+  animation: gradient-shift-1 3s ease infinite;
+}
+
+.animate-border-2 {
+  background-image: linear-gradient(45deg, #0b7ff4, #00d4ff, #0b7ff4);
+  animation: gradient-shift-2 3s ease infinite;
+}
+
+.animate-border-3 {
+  background-image: linear-gradient(45deg, #0b7ff4, #e54144, #0b7ff4);
+  animation: gradient-shift-3 3s ease infinite;
+}
+
+/* Keyframes */
+@keyframes gradient-shift-1 {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes gradient-shift-2 {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes gradient-shift-3 {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Ensure the layout takes full viewport */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Carousel Animations */
+@keyframes scroll-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-right {
+  animation: scroll-right 30s linear infinite;
+  width: max-content;
+}
+
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite;
+  width: max-content;
+}
+
+/* Pause animation on hover */
+.animate-scroll-right:hover,
+.animate-scroll-left:hover {
+  animation-play-state: paused;
+}
+
+/* WhyNotJoin Animations */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(0, 124, 172, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 124, 172, 0.8), 0 0 30px rgba(0, 124, 172, 0.4);
+  }
+}
+
+.pulse-cta {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Curved Arrow */
+.curved-arrow {
+  position: relative;
+  width: 100px;
+  height: 80px;
+}
+
+.arrow-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 60px;
+  background: linear-gradient(to top, #007cac, #052c80);
+  transform-origin: bottom;
+  animation: arrow-extend 1.5s ease-out;
+}
+
+.arrow-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 40px;
+  background: linear-gradient(to top, transparent, #007cac);
+  border-radius: 2px;
+}
+
+.arrow-head {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 12px solid #007cac;
+  animation: arrow-appear 0.5s ease-out 0.5s both;
+}
+
+@keyframes arrow-extend {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    height: 60px;
+    opacity: 1;
+  }
+}
+
+@keyframes arrow-appear {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Bounce animation for dots */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+/* Tunnel/Light Effect */
+.tunnel-effect {
+  position: relative;
+}
+
+.tunnel-effect::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at calc(100% - 100px) 70px,
+    transparent 0%,
+    rgba(0, 0, 0, 0.7) 40%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  pointer-events: none;
+  z-index: 40;
+  transition: all 0.5s ease;
+}
+
+/* Light Source from CTA Button */
+@keyframes beacon-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 30px rgba(0, 124, 172, 0.8), 0 0 60px rgba(0, 124, 172, 0.6),
+      0 0 100px rgba(0, 124, 172, 0.4), 0 0 150px rgba(0, 124, 172, 0.2),
+      0 0 200px rgba(0, 124, 172, 0.1);
+    transform: scale(1.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 124, 172, 1), 0 0 80px rgba(0, 124, 172, 0.8),
+      0 0 120px rgba(0, 124, 172, 0.6), 0 0 180px rgba(0, 124, 172, 0.4),
+      0 0 250px rgba(0, 124, 172, 0.2);
+    transform: scale(1.15);
+  }
+}
+
+.tunnel-effect .nav-cta-button {
+  animation: beacon-glow 3s ease-in-out infinite !important;
+  transform: scale(1.1);
+  transition: all 0.5s ease;
+  position: relative;
+  z-index: 60 !important;
+}
+
+/* Ensure navbar stays on top of the tunnel effect */
+nav {
+  position: relative;
+  z-index: 50 !important;
+}
+
+/* Make sure WhyNotJoin content stays readable */
+.gradient-border {
+  position: relative;
+  z-index: 45;
+}
+
+.tunnel-effect::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at calc(100% - 100px) 70px,
+    transparent 10%,
+    rgba(0, 0, 0, 0.3) 70%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  pointer-events: none;
+  z-index: 39;
+}
+/* Highlighted Terms Styles */
+.highlight-term {
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin: 0 1px;
+  cursor: pointer;
+}
+
+.highlight-term:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Green highlight for IEEE FSS Student Branch */
+.highlight-green {
+  background-color: #10b981;
+  color: white;
+}
+
+.highlight-green:hover {
+  background-color: #059669;
+}
+
+/* Dark blue highlight for Region 8 */
+.highlight-blue {
+  background-color: #1e40af;
+  color: white;
+}
+
+.highlight-blue:hover {
+  background-color: #1e3a8a;
+}
+
+/* Red highlight for IEEE Tunisia Section */
+.highlight-red {
+  background-color: #dc2626;
+  color: white;
+}
+
+.highlight-red:hover {
+  background-color: #b91c1c;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+/* Add to your existing index.css */
+
+/* Progress Bar Animation */
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 65%;
+  }
+  100% {
+    width: 65%;
+  }
+}
+
+.animate-progress {
+  animation: progress 2s ease-in-out infinite;
+}
+
+/* Bounce animation for decorative elements */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}
