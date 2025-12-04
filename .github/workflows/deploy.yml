@@ -23,6 +23,13 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Verify build folder
+        run: |
+          if [ ! -d "./dist" ]; then
+            echo "Build folder not found!"
+            exit 1
+          fi
+
       - name: Deploy to FTP
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
@@ -31,6 +38,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           port: 21
-          local-dir: ./dist
-          server-dir: / # change if you want to deploy in a subfolder
+          local-dir: ./dist/
+          server-dir: /
           dry-run: false
