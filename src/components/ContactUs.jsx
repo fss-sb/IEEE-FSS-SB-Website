@@ -119,7 +119,7 @@ function ContactUs() {
         content: "",
       });
     } catch (error) {
-      console.error("Error sending email:", error);
+      console.error("Error sending email:");
 
       // Show error toast
       showToast("Failed to send message. Please try again.", "error");

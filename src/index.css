@@ -148,8 +148,8 @@ html {
 }
 
 :root {
-  --bg-light: url("/assets/background-light.png");
-  --bg-dark: url("/assets/background-dark.png");
+  --bg-light: url("/assets/background-light.webp");
+  --bg-dark: url("/assets/background-dark.webp");
 }
 
 .bg-theme-aware {
