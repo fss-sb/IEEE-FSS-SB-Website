@@ -4,8 +4,6 @@ import { ThemeContext } from "../context/ThemeProvider";
 function Team(props) {
   const { isDark } = useContext(ThemeContext);
 
-  
-
   return (
     <div
       className={`w-full py-20 ${
@@ -37,7 +35,7 @@ function TeamMemberCard({ member, isDark }) {
       <div className="relative w-48 h-48 mb-6 rounded-full overflow-hidden">
         {/* Main Image */}
         <img
-          src={`/src/assets/heads/${member.image}`}
+          src={`/assets/heads/${member.image}`}
           alt={member.name}
           className="w-full h-full object-cover"
         />
@@ -92,7 +90,7 @@ function TeamMemberCard({ member, isDark }) {
           }`}
         >
           <img
-            src="/src/assets/icons/linkedin-icon.svg"
+            src="/assets/icons/linkedin-icon.svg"
             alt="LinkedIn"
             className="w-5 h-5"
           />

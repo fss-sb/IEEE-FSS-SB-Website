@@ -28,7 +28,7 @@ function Home() {
       name: "Mahmoud Koubaa",
       title: "Human Resource Manager",
       linkedin: "@mahmoud koubaa",
-      image: "/SB/Mahmoud-koubaa.jpg",
+      image: "/SB/Mahmoud-Koubaa.jpg",
     },
     {
       id: 4,

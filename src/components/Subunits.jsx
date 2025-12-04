@@ -76,7 +76,7 @@ function Subunits() {
         }}
       >
         <img
-          src={`/src/assets/logos/subunits/colored/${subunit.logo}`}
+          src={`/assets/logos/subunits/colored/${subunit.logo}`}
           alt={subunit.name}
           className="w-38 h-38 object-contain"
         />

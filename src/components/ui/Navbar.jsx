@@ -78,8 +78,8 @@ function Navbar() {
             <img
               src={
                 isDark
-                  ? "/src/assets/logos/old_SB_white.png"
-                  : "/src/assets/logos/old_SB_black.png"
+                  ? "/assets/logos/old_SB_white.png"
+                  : "/assets/logos/old_SB_black.png"
               }
               alt="IEEE Student Branch"
               className="h-10 w-auto"
@@ -108,8 +108,8 @@ function Navbar() {
                   <img
                     src={
                       isDark
-                        ? "/src/assets/icons/arrow-down-white.svg"
-                        : "/src/assets/icons/arrow-down-black.svg"
+                        ? "/assets/icons/arrow-down-white.svg"
+                        : "/assets/icons/arrow-down-black.svg"
                     }
                     className={`w-2.5 h-2.5 transition-transform duration-200 ${
                       isAboutOpen ? "rotate-180" : ""
@@ -160,8 +160,8 @@ function Navbar() {
                   <img
                     src={
                       isDark
-                        ? "/src/assets/icons/arrow-down-white.svg"
-                        : "/src/assets/icons/arrow-down-black.svg"
+                        ? "/assets/icons/arrow-down-white.svg"
+                        : "/assets/icons/arrow-down-black.svg"
                     }
                     className={`w-2.5 h-2.5 transition-transform duration-200 ${
                       isWorkOpen ? "rotate-180" : ""
@@ -235,15 +235,9 @@ function Navbar() {
               `}
             >
               {isDark ? (
-                <img
-                  src="/src/assets/icons/sun-black.svg"
-                  className="w-[18px]"
-                />
+                <img src="/assets/icons/sun-black.svg" className="w-[18px]" />
               ) : (
-                <img
-                  src="/src/assets/icons/moon-white.svg"
-                  className="w-[18px]"
-                />
+                <img src="/assets/icons/moon-white.svg" className="w-[18px]" />
               )}
             </button>
           </div>
@@ -382,12 +376,12 @@ function Navbar() {
                 >
                   {isDark ? (
                     <img
-                      src="/src/assets/icons/sun-black.svg"
+                      src="/assets/icons/sun-black.svg"
                       className="w-[18px]"
                     />
                   ) : (
                     <img
-                      src="/src/assets/icons/moon-white.svg"
+                      src="/assets/icons/moon-white.svg"
                       className="w-[18px]"
                     />
                   )}

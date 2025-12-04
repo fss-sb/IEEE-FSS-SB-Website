@@ -112,7 +112,7 @@ function WhoWeAre() {
             "The Faculty of Sciences of Sfax (FSS) is a prestigious academic institution affiliated with the University of Sfax, located in Sfax, Tunisia. It specializes in higher education and research in various scientific fields.",
             "Renowned for its strong academic programs and research initiatives, FSS fosters a dynamic environment for learning and innovation, collaborating with both national and international institutions. It plays a key role in developing highly skilled professionals and contributing to the scientific and technological advancement of the region.",
           ]}
-          image="/src/assets/about/fss-building.png"
+          image="/assets/about/fss-building.png"
           imageRight={false}
           isDark={isDark}
           gradientClass="animate-border-1"
@@ -125,7 +125,7 @@ function WhoWeAre() {
             "The IEEE Tunisia Section, founded in 2008, is a prominent branch of the Institute of Electrical and Electronics Engineers (IEEE), focused on advancing IEEE's mission across Tunisia.",
             "The section actively supports student branches, technical chapters, special interest groups, and student awards, fostering growth and collaboration within the engineering and technology community. With over 43 student branches across engineering schools, faculties, and universities, the IEEE Tunisia Section plays a vital role in connecting professionals and students, driving technological progress, and addressing humanitarian challenges through the application of engineering and technology.",
           ]}
-          image="/src/assets/about/ieee-tunisia.png"
+          image="/assets/about/ieee-tunisia.png"
           imageRight={true}
           isDark={isDark}
           gradientClass="animate-border-2"
@@ -138,7 +138,7 @@ function WhoWeAre() {
             "IEEE Region 8 is one of the global regions of the Institute of Electrical and Electronics Engineers (IEEE), encompassing Europe, Africa, and the Middle East.",
             "Region 8 provides a broad platform for networking, collaboration, and professional growth, offering a wide range of activities such as conferences, educational programs, and technical workshops. It also supports student branches, chapters, and special interest groups to enhance participation and engagement at all levels. IEEE Region 8 plays a crucial role in connecting engineers, researchers, and professionals, fostering innovation and advancing technological solutions for global and regional challenges.",
           ]}
-          image="/src/assets/about/ieee-region8.png"
+          image="/assets/about/ieee-region8.png"
           imageRight={false}
           isDark={isDark}
           gradientClass="animate-border-3"

@@ -68,7 +68,7 @@ function WhyJoin() {
                 {/* Icon */}
                 <div className="w-16 h-16 flex items-center justify-center m-4">
                   <img
-                    src={`/src/assets/icons/${card.icon}`}
+                    src={`/assets/icons/${card.icon}`}
                     alt={card.title}
                     className="w-12 h-12"
                   />

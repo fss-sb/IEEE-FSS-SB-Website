@@ -400,7 +400,7 @@ function ContactUs() {
             className={`text-lg ${isDark ? "text-gray-300" : "text-gray-600"}`}
           >
             Or reach out to us directly at:{" "}
-            <span className="font-semibold">ieee.fss.sb@org.com</span>
+            <span className="font-semibold">ieeefss.sb@gmail.com</span>
           </p>
           <p
             className={`text-sm mt-2 ${

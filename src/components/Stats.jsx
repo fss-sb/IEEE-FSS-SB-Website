@@ -14,7 +14,7 @@ function Stats() {
     },
     {
       id: 2,
-      number: "130+",
+      number: "220+",
       label: "Members",
       description: "Active student members",
       gradient: "from-[#007CAC] to-[#8801A3]",

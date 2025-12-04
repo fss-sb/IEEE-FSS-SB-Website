@@ -27,8 +27,8 @@ function Footer() {
           <img
             src={
               isDark
-                ? "/src/assets/logos/old_IEEE_SB_white.png"
-                : "/src/assets/logos/old_IEEE_SB_black.png"
+                ? "/assets/logos/old_IEEE_SB_white.png"
+                : "/assets/logos/old_IEEE_SB_black.png"
             }
             alt="SB logo"
             className="h-7 w-auto"
@@ -82,7 +82,7 @@ function Footer() {
             className="flex items-center space-x-2 cursor-pointer hover:opacity-70"
           >
             <img
-              src="/src/assets/icons/facebook.svg"
+              src="/assets/icons/facebook.svg"
               alt="facebook icon"
               className="h-5 w-5"
             />
@@ -99,8 +99,8 @@ function Footer() {
             <img
               src={
                 isDark
-                  ? "/src/assets/icons/instagram-black.svg"
-                  : "/src/assets/icons/instagram-white.svg"
+                  ? "/assets/icons/instagram-black.svg"
+                  : "/assets/icons/instagram-white.svg"
               }
               alt="instagram icon"
               className="h-5 w-5"
@@ -118,8 +118,8 @@ function Footer() {
             <img
               src={
                 isDark
-                  ? "/src/assets/icons/github-white.svg"
-                  : "/src/assets/icons/github-black.svg"
+                  ? "/assets/icons/github-white.svg"
+                  : "/assets/icons/github-black.svg"
               }
               alt="github icon"
               className="h-5 w-5"
@@ -146,11 +146,7 @@ function Footer() {
 
         {/* Decorative flame + image (1 asset) */}
         <img
-          src={
-            isDark
-              ? "/src/assets/brand-white.svg"
-              : "/src/assets/brand-black.svg"
-          }
+          src={isDark ? "/assets/brand-white.svg" : "/assets/brand-black.svg"}
           alt="decor"
           className="h-20 w-auto"
         />

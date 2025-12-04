@@ -56,8 +56,8 @@ function Hero() {
           <img
             src={
               isDark
-                ? "/src/assets/ouroboros-white.svg"
-                : "/src/assets/ouroboros-black.svg"
+                ? "/assets/ouroboros-white.svg"
+                : "/assets/ouroboros-black.svg"
             }
             alt="ouroboros"
             className="w-64 h-64 animate-spin-slow hero-image"
