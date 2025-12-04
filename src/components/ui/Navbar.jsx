@@ -6,12 +6,54 @@ function Navbar() {
   const { isDark, toggleTheme } = useContext(ThemeContext);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [isVisible, setIsVisible] = useState(true); // New state for navbar visibility
+  const [lastScrollY, setLastScrollY] = useState(0); // Track last scroll position
 
   const aboutRef = useRef(null);
   const workRef = useRef(null);
   const mobilePanelRef = useRef(null);
+  const navRef = useRef(null); // Ref for the navbar container
 
   const navigate = useNavigate();
+
+  // Scroll control effect
+  useEffect(() => {
+    const controlNavbar = () => {
+      // Only apply on mobile screens
+      if (window.innerWidth >= 948) return; // Desktop - keep navbar always visible
+
+      const currentScrollY = window.scrollY;
+
+      // Show navbar when scrolling up or at top
+      if (currentScrollY < lastScrollY || currentScrollY < 100) {
+        setIsVisible(true);
+      }
+      // Hide navbar when scrolling down more than 200px
+      else if (currentScrollY > lastScrollY && currentScrollY > 200) {
+        setIsVisible(false);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    // Add throttling to improve performance
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          controlNavbar();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
 
   function register() {
     navigate("/register");
@@ -45,21 +87,36 @@ function Navbar() {
     setOpenDropdown((prev) => (prev === dropdownName ? null : dropdownName));
   };
 
+  // Function to handle navigation for desktop dropdown items
+  const handleDesktopNavigation = (path) => {
+    navigate(path);
+    setOpenDropdown(null); // Close dropdown after navigation
+  };
+
+  // Function to handle navigation for mobile menu items
+  const handleMobileNavigation = (path) => {
+    navigate(path);
+    setMobileOpen(false); // Close mobile menu after navigation
+  };
+
   const isAboutOpen = openDropdown === "about";
   const isWorkOpen = openDropdown === "work";
 
   return (
     <>
-      {/* NAVBAR */}
+      {/* NAVBAR - Added transform transition for hide/show effect */}
       <div
-        className="
+        ref={navRef}
+        className={`
           fixed top-5 left-1/2 transform -translate-x-1/2
           w-11/12 max-w-7xl
           p-[3px] rounded-[60px]
           bg-gradient-to-r from-[#007CAC] via-[#014598] to-[#007CAC]
           shadow-lg shadow-black/10
           z-50
-        "
+          transition-transform duration-300 ease-in-out
+          ${isVisible ? "translate-y-0" : "-translate-y-32"}
+        `}
       >
         <nav
           className={`
@@ -133,17 +190,13 @@ function Navbar() {
                 >
                   <li
                     className="px-4 py-2 hover:bg-gray-600/20 cursor-pointer"
-                    onClick={() => {
-                      navigate("/about");
-                    }}
+                    onClick={() => handleDesktopNavigation("/about")}
                   >
                     Who We Are
                   </li>
                   <li
                     className="px-4 py-2 hover:bg-gray-600/20 cursor-pointer"
-                    onClick={() => {
-                      navigate("/subunits");
-                    }}
+                    onClick={() => handleDesktopNavigation("/subunits")}
                   >
                     Subunits
                   </li>
@@ -185,9 +238,7 @@ function Navbar() {
                 >
                   <li
                     className="px-4 py-2 hover:bg-gray-600/20 cursor-pointer"
-                    onClick={() => {
-                      navigate("/events");
-                    }}
+                    onClick={() => handleDesktopNavigation("/events")}
                   >
                     Events
                   </li>
@@ -293,9 +344,7 @@ function Navbar() {
             <ul className="flex flex-col space-y-4 font-bold text-sm mt-10">
               <li
                 className="hover:opacity-80 cursor-pointer"
-                onClick={() => {
-                  navigate("/");
-                }}
+                onClick={() => handleMobileNavigation("/")}
               >
                 Home
               </li>
@@ -308,17 +357,13 @@ function Navbar() {
                 <div className="pl-4 border-l-[2px] border-gray-400 space-y-2">
                   <div
                     className="pl-3 cursor-pointer hover:opacity-80"
-                    onClick={() => {
-                      navigate("/about");
-                    }}
+                    onClick={() => handleMobileNavigation("/about")}
                   >
                     Who We Are
                   </div>
                   <div
                     className="pl-3 cursor-pointer hover:opacity-80"
-                    onClick={() => {
-                      navigate("/subunits");
-                    }}
+                    onClick={() => handleMobileNavigation("/subunits")}
                   >
                     Subunits
                   </div>
@@ -333,9 +378,7 @@ function Navbar() {
                 <div className="pl-4 border-l-[2px] border-gray-400 space-y-2">
                   <div
                     className="pl-3 cursor-pointer hover:opacity-80"
-                    onClick={() => {
-                      navigate("/events");
-                    }}
+                    onClick={() => handleMobileNavigation("/events")}
                   >
                     Events
                   </div>
@@ -344,9 +387,7 @@ function Navbar() {
 
               <li
                 className="hover:opacity-80 cursor-pointer"
-                onClick={() => {
-                  navigate("/contactus");
-                }}
+                onClick={() => handleMobileNavigation("/contactus")}
               >
                 Contact us
               </li>

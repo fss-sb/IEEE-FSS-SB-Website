@@ -28,6 +28,15 @@ jobs:
           VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
           VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
 
+      # ✅ THIS IS THE IMPORTANT PART FOR ROUTING
+      - name: Copy .htaccess to dist
+        run: |
+          if [ -f "./.htaccess" ]; then
+            cp .htaccess dist/.htaccess
+          else
+            echo ".htaccess not found in root"
+          fi
+
       - name: Verify build folder
         run: |
           if [ ! -d "./dist" ]; then
