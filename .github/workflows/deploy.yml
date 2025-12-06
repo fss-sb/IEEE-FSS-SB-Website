@@ -27,8 +27,10 @@ jobs:
           VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
           VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
           VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
+          VITE_EMAILJS_ARCAS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_ARCAS_PUBLIC_KEY }}
+          VITE_EMAILJS_ARCAS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_ARCAS_SERVICE_ID }}
+          VITE_EMAILJS_TEMPLATE_ID_ARCAS: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID_ARCAS }}
 
-      # ✅ THIS IS THE IMPORTANT PART FOR ROUTING
       - name: Copy .htaccess to dist
         run: |
           if [ -f "./.htaccess" ]; then

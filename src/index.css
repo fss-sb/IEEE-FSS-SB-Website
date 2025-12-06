@@ -150,6 +150,7 @@ html {
 :root {
   --bg-light: url("/assets/background-light.webp");
   --bg-dark: url("/assets/background-dark.webp");
+  --bg-arcas: url("/assets/ARCASbg.webp");
 }
 
 .bg-theme-aware {
@@ -164,6 +165,10 @@ html {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
+}
+
+.arcas-route {
+  background-image: var(--bg-arcas) !important;
 }
 
 /* Animated Gradient Border (Mask Technique) */

@@ -5,6 +5,7 @@ import ContactUsPage from "./pages/ContactUsPage";
 import WhoWeAre from "./components/WhoWeAre";
 import FormPage from "./pages/FormPage";
 import ComingSoon from "./pages/ComingSoon";
+import ArcasPage from "./pages/ArcasPage";
 
 function Router() {
   return (
@@ -15,6 +16,7 @@ function Router() {
       <Route path="/events" element={<ComingSoon />} />
       <Route path="/contactus" element={<ContactUsPage />} />
       <Route path="/register" element={<FormPage />} />
+      <Route path="/ARCAS1.0" element={<ArcasPage />} />
       {/** 404 page resource not found */}
       <Route path="*" element={<NotFound />} />
     </Routes>

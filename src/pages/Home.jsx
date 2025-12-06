@@ -1,3 +1,4 @@
+import ArcasBanner from "../components/ARCAS";
 import ContactUs from "../components/ContactUs";
 import Hero from "../components/Hero";
 import Location from "../components/Location";
@@ -54,6 +55,7 @@ function Home() {
   ];
   return (
     <>
+      <ArcasBanner />
       <Hero />
       <WhyJoin />
       <WhyNotJoin />
