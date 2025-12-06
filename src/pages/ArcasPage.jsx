@@ -49,7 +49,7 @@ function ArcasPage() {
   }, []);
 
   // Important dates
-  const submissionStartDate = new Date(2025, 11, 6, 22, 0, 0).getTime(); //December 6, 2025 at 10:00 PM (22:00)
+  const submissionStartDate = new Date(2025, 11, 6, 22, 30, 0).getTime(); //December 6, 2025 at 10:30 PM (22:30)
   const formDisableDate = new Date(2025, 11, 7, 10, 32, 0).getTime(); // December 7, 2025 at 10:32 AM
 
   useEffect(() => {
