@@ -27,12 +27,22 @@ function ArcasPage() {
   // State for form availability
   const [isFormDisabled, setIsFormDisabled] = useState(false);
 
+  // NEW: Track if this session has already submitted
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
   // Initialize EmailJS
   const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_ARCAS_SERVICE_ID;
   const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_ARCAS;
   const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_ARCAS_PUBLIC_KEY;
 
+  // NEW: Check localStorage on component mount
   useEffect(() => {
+    // Check if user already submitted in this session
+    const submittedTeam = localStorage.getItem("arcas_submitted_team");
+    if (submittedTeam) {
+      setHasSubmitted(true);
+    }
+
     if (EMAILJS_PUBLIC_KEY) {
       emailjs.init(EMAILJS_PUBLIC_KEY);
     }
@@ -92,7 +102,7 @@ function ArcasPage() {
   };
 
   const handleInputChange = (e) => {
-    if (isFormDisabled) return;
+    if (isFormDisabled || hasSubmitted) return;
 
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -103,6 +113,15 @@ function ArcasPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Check if already submitted in this session
+    if (hasSubmitted) {
+      showToast(
+        "You have already submitted in this session. Each team can only submit once.",
+        "error"
+      );
+      return;
+    }
 
     if (isFormDisabled) {
       showToast("Submissions are closed. The deadline has passed.", "error");
@@ -150,6 +169,11 @@ function ArcasPage() {
       );
 
       console.log("Submission sent successfully:", response);
+
+      // NEW: Mark this session as submitted
+      setHasSubmitted(true);
+      localStorage.setItem("arcas_submitted_team", formData.teamName);
+      localStorage.setItem("arcas_submission_time", new Date().toISOString());
 
       showToast(
         "Submission successful! We've received your Google Drive link.",
@@ -472,7 +496,63 @@ function ArcasPage() {
               </div>
             )}
 
+            {/* NEW: Already Submitted Message */}
+            {hasSubmitted && !isFormDisabled && (
+              <div className="absolute inset-0 bg-green-900/80 rounded-[50px] flex items-center justify-center z-10">
+                <div className="text-center p-8">
+                  <div className="text-5xl mb-4">✅</div>
+                  <h3 className="text-2xl font-bold text-green-300 mb-2">
+                    Submission Received!
+                  </h3>
+                  <p className="text-gray-100 mb-4">
+                    Thank you for your submission.
+                  </p>
+                  <p className="text-gray-300 text-sm">
+                    Team:{" "}
+                    {localStorage.getItem("arcas_submitted_team") ||
+                      "Your team"}
+                    <br />
+                    Submitted at:{" "}
+                    {new Date(
+                      localStorage.getItem("arcas_submission_time") ||
+                        Date.now()
+                    ).toLocaleString()}
+                  </p>
+                  <p className="text-gray-300 text-sm mt-4">
+                    Each team can only submit once.
+                  </p>
+                </div>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Form Note - UPDATED with IMPORTANT warning */}
+              <div className="text-center pt-4">
+                <div className="bg-red-900/30 border border-red-700/50 rounded-xl p-4 mb-4">
+                  <p className="text-red-300 text-sm font-bold mb-1">
+                    ⚠️ IMPORTANT:
+                  </p>
+                  <p className="text-red-200 text-sm">
+                    Each team has <strong>ONE SUBMISSION ONLY</strong>. Make
+                    sure to put the correct links and information before
+                    submitting.
+                  </p>
+                </div>
+                <p className="text-gray-400 text-sm">
+                  {isFormDisabled ? (
+                    "The submission period has ended. No further submissions will be accepted."
+                  ) : hasSubmitted ? (
+                    "You have already submitted. Each team is allowed only one submission."
+                  ) : (
+                    <>
+                      * Required fields: Team Name, Team Leader Email, Google
+                      Drive Link
+                      <br />
+                      All submission files must be in the Google Drive folder.
+                    </>
+                  )}
+                </p>
+              </div>
               {/* Team Name */}
               <div>
                 <label
@@ -488,7 +568,7 @@ function ArcasPage() {
                   value={formData.teamName}
                   onChange={handleInputChange}
                   required
-                  disabled={isLoading || isFormDisabled}
+                  disabled={isLoading || isFormDisabled || hasSubmitted}
                   className="w-full px-6 py-4 rounded-[60px] border-2 border-gray-700 bg-[#00000080] text-white placeholder-gray-400 focus:outline-none focus:border-[#D08700] transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                   placeholder="Enter your team name"
                 />
@@ -509,7 +589,7 @@ function ArcasPage() {
                   value={formData.teamLeaderEmail}
                   onChange={handleInputChange}
                   required
-                  disabled={isLoading || isFormDisabled}
+                  disabled={isLoading || isFormDisabled || hasSubmitted}
                   className="w-full px-6 py-4 rounded-[60px] border-2 border-gray-700 bg-[#00000080] text-white placeholder-gray-400 focus:outline-none focus:border-[#D08700] transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                   placeholder="Enter team leader's email address"
                 />
@@ -533,7 +613,7 @@ function ArcasPage() {
                   value={formData.driveLink}
                   onChange={handleInputChange}
                   required
-                  disabled={isLoading || isFormDisabled}
+                  disabled={isLoading || isFormDisabled || hasSubmitted}
                   className="w-full px-6 py-4 rounded-[60px] border-2 border-gray-700 bg-[#00000080] text-white placeholder-gray-400 focus:outline-none focus:border-[#D08700] transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                   placeholder="https://drive.google.com/drive/folders/your-folder-id"
                 />
@@ -558,7 +638,7 @@ function ArcasPage() {
                   name="githubRepo"
                   value={formData.githubRepo}
                   onChange={handleInputChange}
-                  disabled={isLoading || isFormDisabled}
+                  disabled={isLoading || isFormDisabled || hasSubmitted}
                   className="w-full px-6 py-4 rounded-[60px] border-2 border-gray-700 bg-[#00000080] text-white placeholder-gray-400 focus:outline-none focus:border-[#D08700] transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                   placeholder="https://github.com/your-username/your-repo"
                 />
@@ -568,19 +648,23 @@ function ArcasPage() {
               <div className="text-center pt-8">
                 <button
                   type="submit"
-                  disabled={isLoading || isFormDisabled}
+                  disabled={isLoading || isFormDisabled || hasSubmitted}
                   className={`px-12 py-4 rounded-full w-full md:w-auto font-bold text-lg transition-all duration-300 ${
-                    isLoading || isFormDisabled
+                    isLoading || isFormDisabled || hasSubmitted
                       ? "opacity-60 cursor-not-allowed bg-gray-600"
                       : "hover:scale-105 hover:shadow-lg"
                   }`}
                   style={{
                     background:
-                      isLoading || isFormDisabled ? "#4B5563" : "#D08700",
+                      isLoading || isFormDisabled || hasSubmitted
+                        ? "#4B5563"
+                        : "#D08700",
                     color: "white",
                   }}
                 >
-                  {isFormDisabled ? (
+                  {hasSubmitted ? (
+                    "Already Submitted ✓"
+                  ) : isFormDisabled ? (
                     "Submissions Closed"
                   ) : isLoading ? (
                     <div className="flex items-center justify-center">
@@ -609,22 +693,6 @@ function ArcasPage() {
                     "Submit Your Work"
                   )}
                 </button>
-              </div>
-
-              {/* Form Note */}
-              <div className="text-center pt-4">
-                <p className="text-gray-400 text-sm">
-                  {isFormDisabled ? (
-                    "The submission period has ended. No further submissions will be accepted."
-                  ) : (
-                    <>
-                      * Required fields: Team Name, Team Leader Email, Google
-                      Drive Link
-                      <br />
-                      All submission files must be in the Google Drive folder.
-                    </>
-                  )}
-                </p>
               </div>
             </form>
           </div>
