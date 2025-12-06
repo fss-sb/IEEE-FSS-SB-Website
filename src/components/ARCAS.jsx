@@ -85,14 +85,14 @@ function ArcasBanner() {
           >
             {/* ARCAS1.0  */}
             <span
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight"
               style={{ color: "#D08700" }}
             >
               ARCAS1.0
             </span>
 
-            {/* Timer Container - Smaller */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 md:gap-3">
+            {/* Timer Container*/}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 md:gap-3 ">
               {/* Timer Numbers with labels */}
               <div className="flex items-center justify-center gap-1 sm:gap-2">
                 {/* Days */}
@@ -200,7 +200,7 @@ function ArcasBanner() {
                 </div>
               </div>
 
-              {/* LEFT text - Smaller */}
+              {/* LEFT text */}
               <span
                 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold"
                 style={{ color: "#D08700" }}
@@ -210,7 +210,7 @@ function ArcasBanner() {
             </div>
           </div>
 
-          {/* Countdown Date Info - Smaller */}
+          {/* Countdown Date Info */}
           <div className="mt-4 md:mt-6">
             <div
               className={`inline-block rounded-full px-3 sm:px-4 py-1 sm:py-2 border ${
@@ -237,7 +237,7 @@ function ArcasBanner() {
           </div>
 
           {/* Progress Bar for visual countdown - Optional, keep if needed */}
-          <div className="max-w-md mx-auto mt-6">
+          <div className="max-w-md mx-auto mt-6 ">
             <p
               className={`text-xs sm:text-sm mt-1 ${
                 isDark ? "text-gray-400" : "text-gray-500"
