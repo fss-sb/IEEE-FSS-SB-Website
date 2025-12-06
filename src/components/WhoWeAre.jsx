@@ -98,6 +98,7 @@ function WhoWeAre() {
                   src={"SB_logo.png"}
                   alt="IEEE FSS Student Branch"
                   className="w-full h-90 object-contain"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -202,7 +203,12 @@ function Section({
         <div
           className={`gradient-border ${gradientClass} rounded-3xl overflow-hidden`}
         >
-          <img src={image} alt={title} className="w-full h-80 object-cover" />
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-80 object-cover"
+            loading="lazy"
+          />
         </div>
       </div>
     </div>

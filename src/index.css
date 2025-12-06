@@ -147,30 +147,6 @@ html {
   font-family: "Open Sans", sans-serif;
 }
 
-:root {
-  --bg-light: url("/assets/background-light.webp");
-  --bg-dark: url("/assets/background-dark.webp");
-  --bg-arcas: url("/assets/ARCASbg.webp");
-}
-
-.bg-theme-aware {
-  background-image: var(--bg-light);
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-}
-
-.dark .bg-theme-aware {
-  background-image: var(--bg-dark);
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-}
-
-.arcas-route {
-  background-image: var(--bg-arcas) !important;
-}
-
 /* Animated Gradient Border (Mask Technique) */
 .gradient-border {
   position: relative;

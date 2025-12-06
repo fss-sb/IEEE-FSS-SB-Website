@@ -63,13 +63,14 @@ function ArcasBanner() {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: "url('/assets/arcasb.png')",
+              backgroundImage: "url('/assets/arcasb.webp')",
               backgroundSize: "cover",
               backgroundPosition: "center",
               height: "calc(100% + 40px)", //  40px to height
               width: "100%",
               top: "-55px", // Move up by 40px
             }}
+            loading="lazy"
           />
         </div>
       </div>
@@ -224,7 +225,7 @@ function ArcasBanner() {
                   isDark ? "text-gray-300" : "text-gray-700"
                 }`}
               >
-                Until{" "}
+                Starts at{" "}
                 <span
                   className={`font-semibold ${
                     isDark ? "text-white" : "text-gray-900"

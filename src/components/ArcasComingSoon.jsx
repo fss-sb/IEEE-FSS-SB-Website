@@ -21,7 +21,11 @@ function ArcasComingSoon() {
             <div className="flex flex-col md:flex-row gap-6 mt-10 items-stretch md:items-center justify-center">
               <div className="bg-[#00000070] p-6 rounded-2xl flex flex-col items-center justify-center min-h-[220px]">
                 <div className="flex items-center justify-center mb-5">
-                  <img src="/assets/icons/drive.png" className="h-12 w-12" />
+                  <img
+                    src="/assets/icons/drive.png"
+                    className="h-12 w-12"
+                    loading="lazy"
+                  />
                 </div>
                 <h3 className="text-lg font-bold mb-2 text-white">
                   Google Drive Ready
@@ -33,7 +37,11 @@ function ArcasComingSoon() {
 
               <div className="bg-[#00000070] p-6 rounded-2xl flex flex-col items-center justify-center min-h-[220px]">
                 <div className="flex items-center justify-center mb-5">
-                  <img src="/assets/icons/team.png" className="h-12 w-12" />
+                  <img
+                    src="/assets/icons/team.png"
+                    className="h-12 w-12"
+                    loading="lazy"
+                  />
                 </div>
                 <h3 className="text-lg font-bold mb-2 text-white">
                   Team Formation
@@ -45,7 +53,11 @@ function ArcasComingSoon() {
 
               <div className="bg-[#00000070] p-6 rounded-2xl flex flex-col items-center justify-center min-h-[220px]">
                 <div className="flex items-center justify-center mb-5">
-                  <img src="/assets/icons/book.png" className="h-12 w-12" />
+                  <img
+                    src="/assets/icons/book.png"
+                    className="h-12 w-12"
+                    loading="lazy"
+                  />
                 </div>
                 <h3 className="text-lg font-bold mb-2 text-white">
                   Review Materials

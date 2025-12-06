@@ -61,6 +61,7 @@ function Hero() {
             }
             alt="ouroboros"
             className="w-64 h-64 animate-spin-slow hero-image"
+            loading="lazy"
           />
         </div>
       </div>

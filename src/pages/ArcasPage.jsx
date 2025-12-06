@@ -40,7 +40,7 @@ function ArcasPage() {
 
   // Important dates
   const submissionStartDate = new Date(2025, 11, 6, 22, 0, 0).getTime(); //December 6, 2025 at 10:00 PM (22:00)
-  const formDisableDate = new Date(2025, 11, 7, 10, 2, 0).getTime();  // December 7, 2025 at 10:02 AM
+  const formDisableDate = new Date(2025, 11, 7, 10, 2, 0).getTime(); // December 7, 2025 at 10:02 AM
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -262,10 +262,11 @@ function ArcasPage() {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: "url('/assets/arcasb.png')",
+              backgroundImage: "url('/assets/arcasb.webp')",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
+            isLoading="lazy"
           />
         </div>
       </div>

@@ -38,6 +38,7 @@ function TeamMemberCard({ member, isDark }) {
           src={`/assets/heads/${member.image}`}
           alt={member.name}
           className="w-full h-full object-cover"
+          loading="lazy"
         />
       </div>
 

@@ -79,6 +79,7 @@ function Subunits() {
           src={`/assets/logos/subunits/colored/${subunit.logo}`}
           alt={subunit.name}
           className="w-38 h-38 object-contain"
+          loading="lazy"
         />
       </div>
     );

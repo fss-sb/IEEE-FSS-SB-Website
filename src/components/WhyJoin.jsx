@@ -71,6 +71,7 @@ function WhyJoin() {
                     src={`/assets/icons/${card.icon}`}
                     alt={card.title}
                     className="w-12 h-12"
+                    loading="lazy"
                   />
                 </div>
 

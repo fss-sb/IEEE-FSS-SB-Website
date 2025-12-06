@@ -32,6 +32,7 @@ function Footer() {
             }
             alt="SB logo"
             className="h-7 w-auto"
+            loading="lazy"
           />
         </div>
 
@@ -85,6 +86,7 @@ function Footer() {
               src="/assets/icons/facebook.svg"
               alt="facebook icon"
               className="h-5 w-5"
+              loading="lazy"
             />
             <p className="text-blue-600 text-xs">Facebook</p>
           </a>
@@ -104,6 +106,7 @@ function Footer() {
               }
               alt="instagram icon"
               className="h-5 w-5"
+              loading="lazy"
             />
             <p className="text-[#ff0062] text-xs">Instagram</p>
           </a>
@@ -123,6 +126,7 @@ function Footer() {
               }
               alt="github icon"
               className="h-5 w-5"
+              loading="lazy"
             />
             <p className="text-xs">GitHub</p>
           </a>
@@ -149,6 +153,7 @@ function Footer() {
           src={isDark ? "/assets/brand-white.svg" : "/assets/brand-black.svg"}
           alt="decor"
           className="h-20 w-auto"
+          loading="lazy"
         />
 
         {/* Bottom text */}

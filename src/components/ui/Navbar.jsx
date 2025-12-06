@@ -6,7 +6,7 @@ function Navbar() {
   const { isDark, toggleTheme } = useContext(ThemeContext);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
-  const [isVisible, setIsVisible] = useState(true); // New state for navbar visibility
+  const [isVisible, setIsVisible] = useState(true); //  state for navbar visibility
   const [lastScrollY, setLastScrollY] = useState(0); // Track last scroll position
 
   const aboutRef = useRef(null);
@@ -135,8 +135,8 @@ function Navbar() {
             <img
               src={
                 isDark
-                  ? "/assets/logos/old_SB_white.png"
-                  : "/assets/logos/old_SB_black.png"
+                  ? "/assets/logos/old_SB_white.webp"
+                  : "/assets/logos/old_SB_black.webp"
               }
               alt="IEEE Student Branch"
               className="h-10 w-auto"
