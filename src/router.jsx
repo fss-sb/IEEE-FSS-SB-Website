@@ -26,10 +26,7 @@ function Router() {
       <Route path="/register" element={<FormPage />} />
 
       {/* Conditionally render ARCAS1.0 page or coming soon page */}
-      <Route
-        path="/ARCAS1.0"
-        element={isArcasAvailable ? <ArcasPage /> : <ArcasComingSoon />}
-      />
+  
 
       {/** 404 page resource not found */}
       <Route path="*" element={<NotFound />} />
