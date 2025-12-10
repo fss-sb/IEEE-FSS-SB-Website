@@ -5,7 +5,7 @@ import ContactUsPage from "./pages/ContactUsPage";
 import WhoWeAre from "./components/WhoWeAre";
 import FormPage from "./pages/FormPage";
 import ComingSoon from "./pages/ComingSoon";
-import ArcasPage from "./pages/ArcasPage";
+
 import ArcasComingSoon from "./components/ArcasComingSoon";
 
 function Router() {
