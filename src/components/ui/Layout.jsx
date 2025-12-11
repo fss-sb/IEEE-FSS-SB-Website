@@ -1,27 +1,22 @@
-import { useLocation } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { ThemeContext } from "../../context/ThemeProvider";
 
 function Layout({ children }) {
-  const location = useLocation();
   const { isDark } = useContext(ThemeContext);
-  const isArcasRoute = location.pathname === "/ARCAS1.0";
 
   const [bgImage, setBgImage] = useState("/assets/background-light.webp");
 
   useEffect(() => {
-    if (isArcasRoute) {
-      setBgImage("/assets/ARCASbg.webp");
-    } else if (isDark) {
+    if (isDark) {
       setBgImage("/assets/background-dark.webp");
     } else {
       setBgImage("/assets/background-light.webp");
     }
-  }, [isDark, isArcasRoute]); 
+  }, [isDark]);
 
   return (
     <div className="min-h-screen flex flex-col relative">
-      {/* FIXED BACKGROUND */}
+      {/* BACKGROUND */}
       <img
         src={bgImage}
         alt="Background"

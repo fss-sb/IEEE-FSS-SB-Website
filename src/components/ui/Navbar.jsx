@@ -268,13 +268,19 @@ function Navbar() {
                 h-[30px] w-[120px] flex items-center justify-center
                 nav-cta-button
               "
-              onClick={register}
+              onClick={() => {
+                register();
+                setOpenDropdown(null); // Close any open dropdowns on desktop
+              }}
             >
               Join IEEE
             </button>
 
             <button
-              onClick={toggleTheme}
+              onClick={() => {
+                toggleTheme();
+                setOpenDropdown(null); // Close any open dropdowns on desktop
+              }}
               className={`
                 w-8 h-8 rounded-full flex items-center justify-center
                 transition-all duration-300
@@ -392,18 +398,26 @@ function Navbar() {
                 Contact us
               </li>
 
+              {/* JOIN IEEE BUTTON - Mobile with auto-close */}
               <li>
                 <button
-                  className="w-full nav-cta-button px-4 py-[2px] rounded-full font-bold bg-gradient-to-r from-[#007CAC] to-[#052C80] text-white text-sm hover:opacity-90 transition-opacity h-[30px]  flex items-center justify-center"
-                  onClick={register}
+                  className="w-full nav-cta-button px-4 py-[2px] rounded-full font-bold bg-gradient-to-r from-[#007CAC] to-[#052C80] text-white text-sm hover:opacity-90 transition-opacity h-[30px] flex items-center justify-center"
+                  onClick={() => {
+                    register(); // Navigate to /register
+                    setMobileOpen(false); // Close mobile menu
+                  }}
                 >
                   Join IEEE
                 </button>
               </li>
 
+              {/* THEME TOGGLE BUTTON - Mobile with auto-close */}
               <li>
                 <button
-                  onClick={toggleTheme}
+                  onClick={() => {
+                    toggleTheme(); // Toggle theme
+                    setMobileOpen(false); // Close mobile menu
+                  }}
                   className={`
                     w-full h-[30px] rounded-full mt-2
                     flex items-center justify-center
